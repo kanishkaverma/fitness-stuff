@@ -1,20 +1,16 @@
-import * as SQLite from "expo-sqlite";
+import PocketBase from "pocketbase";
 
-export const db = SQLite.openDatabase("myDb.sqlite");
+const pb = new PocketBase("http://127.0.0.1:8090");
+pb.autoCancellation(false)
 
-export function initDatabase() {
-	function initDatabase() {
-		db.transaction((tx) => {
-			tx.executeSql(
-				"CREATE TABLE IF NOT EXISTS workouts (id INTEGER PRIMARY KEY AUTOINCREMENT, description TEXT, exercises TEXT)",
-			);
+export async function getFoodData(name) {
+	try {
+		console.log(name)
+		const resultList = await pb.collection("food").getList(1, 50, {
+			filter: `created >= "2022-01-01 00:00:00" && name ~ "${name}"`,
 		});
-
-		// Fetch workout history from the database
-		// db.transaction((tx) => {
-		// 	tx.executeSql("SELECT * FROM workouts", [], (_, { rows }) => {
-		// 		setWorkoutHistory(rows._array);
-		// 	});
-		// });
+		return resultList
+	} catch (e) {console.log(e)
+	console.log(e.originalError)
 	}
 }

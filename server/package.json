@@ -10,6 +10,7 @@
 	"type": "module",
 	"license": "ISC",
 	"dependencies": {
+		"@tamagui/config": "^1.92.1",
 		"pocketbase": "^0.21.1"
 	}
 }

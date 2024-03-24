@@ -1,0 +1,15 @@
+{
+	"name": "server",
+	"version": "1.0.0",
+	"description": "",
+	"main": "initDB.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "",
+	"type": "module",
+	"license": "ISC",
+	"dependencies": {
+		"pocketbase": "^0.21.1"
+	}
+}
